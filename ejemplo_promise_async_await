@@ -1,0 +1,21 @@
+function obtenerUsuario(id: number): Promise<{ id: number; nombre: string }> {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      if (id > 0) {
+        resolve({ id, nombre: "Juan Pérez" });
+      } else {
+        reject("ID de usuario no válido");
+      }
+    }, 1000); // simula 1 segundo de retraso
+  });
+}
+
+
+async function mostrarUsuario(id: number): Promise<void> {
+  try {
+    const usuario = await obtenerUsuario(id);
+    console.log("Usuario:", usuario);
+  } catch (error) {
+    console.error("Error al obtener el usuario:", error);
+  }
+}
